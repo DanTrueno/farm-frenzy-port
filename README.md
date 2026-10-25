@@ -1,6 +1,6 @@
 # Farm Frenzy (Весёлая ферма) — native port
 
-*A fan-made, cross-platform reimplementation of the engine of Farm Frenzy (Melesta / Alawar, 2007).
+*A fan-made, cross-platform reimplementation of the engine of Farm Frenzy (2007).
 It runs the original game data natively on macOS, Windows and Linux. No game files are included —
 you need your own copy of the game.*
 
@@ -8,8 +8,8 @@ you need your own copy of the game.*
 по результатам изучения оригинального `farm.wrp.exe`. Графика, звуки, тексты и параметры уровней
 берутся из файлов вашей копии игры во время работы.
 
-> **Файлов игры в репозитории нет и быть не должно.** Игра — собственность Melesta и Alawar.
-> Для запуска нужна ваша легальная копия «Весёлой фермы» (русская версия 2007 года):
+> **Файлов игры в репозитории нет.** Для запуска нужна своя копия «Весёлой фермы»
+> (русская версия 2007 года):
 > из неё понадобятся `Data/data.pack`, `Data/ru.pack` и, по желанию, `farm.wrp.exe` (тексты подсказок).
 
 ## Что работает
@@ -58,7 +58,9 @@ cmake --build build-win -j
 scripts/build_linux.sh "/путь/к/Веселая ферма"
 ```
 
-Для сборки SDL3 нужны dev-пакеты X11/Wayland и звука (список — в `.github/workflows/build.yml`).
+Для сборки SDL3 нужны dev-пакеты X11/Wayland и звука: полный список для Ubuntu/Debian —
+в `.github/workflows/build.yml`, для других дистрибутивов — в
+[README-linux SDL](https://wiki.libsdl.org/SDL3/README-linux#build-dependencies).
 
 ### Параметры CMake
 
@@ -123,8 +125,7 @@ scripts/build_linux.sh "/путь/к/Веселая ферма"
 
 ## Лицензия
 
-Код порта распространяется под лицензией [MIT](LICENSE). Она не распространяется на игру
-«Весёлая ферма» и её файлы — они принадлежат Melesta и Alawar.
+Код порта — под лицензией [MIT](LICENSE).
 
 ## Сторонний код
 

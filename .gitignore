@@ -7,7 +7,7 @@ out/
 *.user
 CMakeUserPresets.json
 
-# game data is NOT part of this repository (copyrighted, bring your own copy)
+# game data is not part of this repository (bring your own copy of the game)
 *.pack
 Data/
 gamedata/
