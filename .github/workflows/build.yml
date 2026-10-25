@@ -1,0 +1,48 @@
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            name: windows-x64
+          - os: macos-latest
+            name: macos-universal
+          - os: ubuntu-latest
+            name: linux-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Linux dependencies for SDL3
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake libx11-dev libxext-dev libxrandr-dev \
+            libxcursor-dev libxi-dev libxss-dev libxkbcommon-dev libwayland-dev wayland-protocols \
+            libegl1-mesa-dev libgl1-mesa-dev libasound2-dev libpulse-dev libdbus-1-dev libudev-dev
+
+      - name: Build (Windows)
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: scripts\build_windows.bat
+
+      - name: Build (macOS)
+        if: runner.os == 'macOS'
+        run: scripts/build_macos.sh
+
+      - name: Build (Linux)
+        if: runner.os == 'Linux'
+        run: scripts/build_linux.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: farm-frenzy-port-${{ matrix.name }}
+          path: dist/

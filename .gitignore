@@ -1,0 +1,24 @@
+# build output
+build*/
+dist/
+out/
+.vs/
+.vscode/
+*.user
+CMakeUserPresets.json
+
+# game data is NOT part of this repository (copyrighted, bring your own copy)
+*.pack
+Data/
+gamedata/
+tips.txt
+*.icns
+*.ico
+
+# local reverse-engineering artifacts
+decompiled/
+extracted/
+ghidra*/
+
+.DS_Store
+__pycache__/
